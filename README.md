@@ -26,9 +26,9 @@ Base.vn (10 apps, 94 tools)
 | Chat SDK | Vercel Chat SDK | https://chat-sdk.dev/docs/usage.md |
 | Zalo adapter | chat-adapter-zalo (community) | https://chat-sdk.dev/adapters/community/zalo |
 | State store | Upstash Redis | https://chat-sdk.dev/docs/state-adapters.md |
-| Model | OpenAI gpt-4.1-mini | https://developers.openai.com/api/docs/models/gpt-4.1-mini |
+| Model | OpenAI gpt-5.6-luna | https://developers.openai.com/api/docs/models/gpt-5.6-luna |
 | MCP server | Cloudflare Worker | https://modelcontextprotocol.io |
-| Hosting | Vercel Hobby (free) | https://vercel.com/docs/plans/hobby |
+| Observability | Langfuse Cloud (JP) | https://langfuse.com/docs/integrations/vercel-ai-sdk |
 
 ## File structure
 
@@ -76,6 +76,9 @@ No HITL approval gate (Zalo doesn't support cards). Instead, the instructions pr
 | `REDIS_URL` | Upstash Redis connection string |
 | `EVE_AUTH_USER` | HTTP channel basic auth user |
 | `EVE_AUTH_PASSWORD` | HTTP channel basic auth password |
+| `LANGFUSE_SECRET_KEY` | Langfuse API secret key |
+| `LANGFUSE_PUBLIC_KEY` | Langfuse API public key |
+| `LANGFUSE_BASE_URL` | Langfuse endpoint (e.g. https://jp.cloud.langfuse.com) |
 
 ## Deploy
 
@@ -100,3 +103,4 @@ Zalo webhook: `https://agent.htpp.com.vn/eve/v1/zalo`
 - [Model Context Protocol](https://modelcontextprotocol.io)
 - [Vercel Hobby plan](https://vercel.com/docs/plans/hobby)
 - [Upstash Redis](https://upstash.com)
+- [Langfuse](https://langfuse.com)
