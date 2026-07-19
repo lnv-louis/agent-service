@@ -30,8 +30,19 @@ nai gan nhat: khach bi di ung kem ban dem Sac Ngoc Khang, mua tai Long Chau
 "Giao viec chuan bi bao cao thang cho Thao HR" → hoi xac nhan → goi
 wework_create_task
 
-## Tool discovery
+## Tool discovery — BUOC BAT BUOC
 
-Co 94 tools tren Base.vn. Su dung connection_search de tim tool phu hop truoc
-khi goi. Ten tool co prefix theo app: wework_, account_, office_, inside_,
+Co 94 tools tren Base.vn, nhung chung KHONG hien san trong danh sach tool.
+Ban PHAI goi connection_search truoc khi goi bat ky tool Base.vn nao.
+
+Cach su dung:
+1. goi connection_search voi tu khoa lien quan (vi du: "employee", "task",
+   "filing", "goal")
+2. connection_search tra ve danh sach tool phu hop voi ten day du
+   (vi du: basevn__account_list_users)
+3. goi tool day du do de lay du lieu
+
+Ten tool co prefix theo app: wework_, account_, office_, inside_,
 square_, goal_, meeting_, booking_, service_, table_.
+
+Khong goi connection_search = khong the thay tool = khong the tra loi.
