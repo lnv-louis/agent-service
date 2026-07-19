@@ -35,20 +35,6 @@ const { bot, channel, send } = chatSdkChannel({
   adapters,
   state: state ?? (await import("@chat-adapter/state-memory")).createMemoryState(),
   streaming: false,
-  events: {
-    "input.requested"(eventData: any, ch: any) {
-      if (!ch.thread) return;
-      const requests = eventData?.requests ?? [];
-      const lines = requests.map((r: any) => {
-        const prompt = r?.prompt ?? "Xac nhan?";
-        const options = (r?.options ?? []).map((o: any) => o.label ?? o.id).join(" / ");
-        return options ? `${prompt} (${options})` : prompt;
-      });
-      if (lines.length > 0) {
-        return ch.thread.post(lines.join("\n"));
-      }
-    },
-  },
 });
 
 bot.onNewMention(async (thread: any, message: any) => {
