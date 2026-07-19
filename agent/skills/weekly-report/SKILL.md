@@ -7,10 +7,20 @@ description: Generate a weekly report by reading tasks, goals, and documents fro
 ## Workflow
 
 1. Identify the time range (which week, which month)
-2. List tasks completed in that period across relevant projects
-3. Check goals/KPI progress with goal tools
-4. Check for any new Office documents or announcements
+2. Call connection_search to find task/goal/document tools
+3. Call each tool — WRITE results to /workspace files (tasks.json, goals.json, docs.json)
+4. Use grep/read_file to extract only completed tasks in the date range
 5. Summarize in Vietnamese, plain text, under 2000 chars
+
+## Sandbox staging (MANDATORY)
+
+Tool results from Base.vn can be huge (thousands of tasks, hundreds of employees).
+DO NOT let large results stay in context. Always:
+
+1. Call tool → get result
+2. write_file("/workspace/[name].json", result) immediately
+3. grep or read_file specific fields from the file
+4. Build the report from the extracted data, not from the raw result in context
 
 ## Tools to search
 

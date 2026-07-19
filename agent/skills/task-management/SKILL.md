@@ -30,7 +30,7 @@ The task is created in the creator's personal project automatically.
 
 - User asks about a department's work → list projects, find the matching one, list tasks
 - User asks about a person's tasks → search by username in task fields
-- Large projects (5000+ tasks) — ask if they want a summary or specific filter
+- Large projects (5000+ tasks) — WRITE result to /workspace/tasks.json, then grep by assignee or status. NEVER let the full task list stay in context.
 
 ## HTP project reference
 

@@ -32,5 +32,5 @@ Key tools:
    - lena, dangvan, ngocmaifb, chieuanh (sales/marketing)
    - thuhuyen, thanhtruc (accounting)
    - thaomy, thanhdat (R&D/product)
-2. If the user asks about a department, list all users and filter by title/manager.
+2. If the user asks about a department, list all users — WRITE result to /workspace/employees.json, then grep by title/manager.
 3. Report name, title, and department. Do not share phone numbers or emails unless explicitly asked.
