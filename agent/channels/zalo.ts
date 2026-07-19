@@ -53,6 +53,9 @@ const { bot, channel, send } = chatSdkChannel({
 
 bot.onNewMention(async (thread: any, message: any) => {
   const text = (message.text ?? "").trim();
+  const zaloUserId = message?.from?.userId ?? message?.author?.userId ?? "unknown";
+  const zaloName = message?.from?.userName ?? message?.author?.userName ?? "unknown";
+  console.info(`[zalo] user: ${zaloUserId} name: ${zaloName} text: ${text.slice(0, 80)}`);
   if (isResetCommand(text)) {
     await thread.unsubscribe();
     await thread.post("Da ket thuc phien. Gui tin nhan moi de bat dau lai.");
