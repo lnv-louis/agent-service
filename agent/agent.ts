@@ -5,7 +5,7 @@ import { defineAgent } from "eve";
 import { openai } from "@ai-sdk/openai";
 
 export default defineAgent({
-  model: openai("gpt-4.1-mini"),
+  model: openai("gpt-5.6-luna"),
   reasoning: "medium",
   compaction: {
     thresholdPercent: 0.75,
