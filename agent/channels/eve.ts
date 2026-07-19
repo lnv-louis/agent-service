@@ -1,15 +1,25 @@
+// Eve HTTP channel: shared-secret basic auth for operator access.
+// The Zalo channel is the primary surface for the family. This HTTP channel
+// exists for smoke-testing the deployed agent via curl and for debugging.
+// Docs: https://raw.githubusercontent.com/vercel/eve/main/docs/channels/eve.mdx
+// Docs: https://raw.githubusercontent.com/vercel/eve/main/docs/guides/auth-and-route-protection.md
 import { eveChannel } from "eve/channels/eve";
-import { localDev, placeholderAuth, vercelOidc } from "eve/channels/auth";
+import { httpBasic } from "eve/channels/auth";
+
+const OPERATOR_USER = process.env.EVE_AUTH_USER ?? "";
+const OPERATOR_PASSWORD = process.env.EVE_AUTH_PASSWORD ?? "";
+
+if (!OPERATOR_USER || !OPERATOR_PASSWORD) {
+  console.warn(
+    "[eve] EVE_AUTH_USER or EVE_AUTH_PASSWORD is not set; the HTTP channel will reject all requests. Set both to enable operator access.",
+  );
+}
 
 export default eveChannel({
   auth: [
-    // Lets the eve TUI and your Vercel deployments reach the deployed agent.
-    vercelOidc(),
-    // Open on localhost for `eve dev` and the REPL; ignored in production.
-    localDev(),
-    // This placeholder will not allow browser requests in production.
-    // Replace it with your app's auth provider, like Auth.js or Clerk,
-    // or use none() for a public demo.
-    placeholderAuth(),
+    httpBasic({
+      username: OPERATOR_USER,
+      password: OPERATOR_PASSWORD,
+    }),
   ],
 });
