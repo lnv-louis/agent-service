@@ -12,14 +12,15 @@ import { LangfuseVercelAiSdkIntegration } from "@langfuse/vercel-ai-sdk";
 import { NodeSDK } from "@opentelemetry/sdk-node";
 import { defineInstrumentation } from "eve/instrumentation";
 
-const sdk = new NodeSDK({
-  spanProcessors: [new LangfuseSpanProcessor()],
-});
-
-sdk.start();
-registerTelemetry(new LangfuseVercelAiSdkIntegration());
-
 export default defineInstrumentation({
   recordInputs: false,
   recordOutputs: false,
+  setup({ agentName }) {
+    const sdk = new NodeSDK({
+      spanProcessors: [new LangfuseSpanProcessor()],
+      serviceName: agentName,
+    });
+    sdk.start();
+    registerTelemetry(new LangfuseVercelAiSdkIntegration());
+  },
 });

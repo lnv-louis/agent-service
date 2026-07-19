@@ -48,15 +48,6 @@ const { bot, channel, send } = chatSdkChannel({
       if (!ch.thread) return;
       ch.thread.post("Da xay ra loi. Vui long thu lai sau. (Error)");
     },
-    "session.waiting"(data: any, ch: any, ctx: any) {
-      if (!ch.thread) return;
-      const auth = ctx?.session?.auth?.current;
-      if (auth?.principalType === "runtime") {
-        ch.thread.post(
-          "Phien da dat gioi han token. Mention @HTP Assistant de bat dau phien moi.",
-        );
-      }
-    },
   },
 });
 
