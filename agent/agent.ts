@@ -5,8 +5,11 @@ import { defineAgent } from "eve";
 import { openai } from "@ai-sdk/openai";
 
 export default defineAgent({
-  model: openai("gpt-4.1"),
+  model: openai("gpt-4.1-mini"),
   reasoning: "medium",
+  compaction: {
+    thresholdPercent: 0.75,
+  },
   limits: {
     maxOutputTokensPerSession: 50_000,
   },

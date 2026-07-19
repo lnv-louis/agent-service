@@ -3,6 +3,7 @@
 // Zalo adapter: https://chat-sdk.dev/adapters/community/zalo
 // Chat SDK handling events: https://chat-sdk.dev/docs/handling-events.md
 // Redis state adapter: https://chat-sdk.dev/docs/state-adapters.md
+// Session lifecycle: https://raw.githubusercontent.com/vercel/eve/main/docs/concepts/sessions-runs-and-streaming.md
 import { chatSdkChannel, messageToUserContent } from "eve/channels/chat-sdk";
 import { createZaloAdapter } from "chat-adapter-zalo";
 import { createRedisState } from "@chat-adapter/state-redis";
@@ -30,24 +31,58 @@ if (!state) {
   );
 }
 
+const RESET_KEYWORDS = ["exit", "thoat", "reset", "lam moi"];
+
+function isResetCommand(text: string): boolean {
+  const normalized = text.trim().toLowerCase();
+  return RESET_KEYWORDS.includes(normalized);
+}
+
 const { bot, channel, send } = chatSdkChannel({
   userName: "HTP Assistant",
   adapters,
   state: state ?? (await import("@chat-adapter/state-memory")).createMemoryState(),
   streaming: false,
+  events: {
+    "turn.failed"(data: any, ch: any) {
+      if (!ch.thread) return;
+      ch.thread.post("Da xay ra loi. Vui long thu lai sau. (Error)");
+    },
+    "session.waiting"(data: any, ch: any, ctx: any) {
+      if (!ch.thread) return;
+      const auth = ctx?.session?.auth?.current;
+      if (auth?.principalType === "runtime") {
+        ch.thread.post(
+          "Phien da dat gioi han token. Mention @HTP Assistant de bat dau phien moi.",
+        );
+      }
+    },
+  },
 });
 
 bot.onNewMention(async (thread: any, message: any) => {
+  const text = (message.text ?? "").trim();
+  if (isResetCommand(text)) {
+    await thread.unsubscribe();
+    await thread.post("Da ket thuc phien. Gui tin nhan moi de bat dau lai.");
+    return;
+  }
   await thread.subscribe();
   const auth = resolveZaloIdentity(message);
   await send(messageToUserContent(message), {
     thread,
-    title: (message.text ?? "").slice(0, 50),
+    title: text.slice(0, 50),
     ...(auth ? { auth } : {}),
   });
 });
 
 bot.onSubscribedMessage(async (thread: any, message: any) => {
+  const text = (message.text ?? "").trim();
+  if (isResetCommand(text)) {
+    await thread.unsubscribe();
+    await thread.post("Da ket thuc phien. Gui tin nhan moi de bat dau lai.");
+    return;
+  }
   const auth = resolveZaloIdentity(message);
   await send(messageToUserContent(message), {
     thread,
