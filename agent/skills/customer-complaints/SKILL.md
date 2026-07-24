@@ -29,6 +29,12 @@ Square contains customer health information (allergies, diagnoses, prescriptions
 - Summarize the issue type and product involved
 - If the chairman asks for details, summarize the complaint without PII
 
+## Note
+
+The Base.vn Square API is read-only via MCP. Creating questions or posting
+answers is not supported. If the user asks to submit a complaint or reply,
+tell them to do it directly in Base.vn.
+
 ## Workflow
 
 1. Call `square_list_questions` (returns up to 100 at a time)

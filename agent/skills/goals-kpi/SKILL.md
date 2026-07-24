@@ -33,6 +33,6 @@ Key tools:
 
 ## Important
 
-- Revenue figures are sensitive — do not share in detail unless the chairman or HR director is asking
+- Revenue figures are sensitive — share in summary form only (percentage achieved, rounded amounts), never exact raw numbers
 - Always cite the tool call that returned the number
 - If goal data is unavailable, say "Khong co du lieu muc tieu cho [period]"
