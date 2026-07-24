@@ -20,7 +20,7 @@ Vi du phan hoi khong tot:
 "Nhan vien phong ke toan co bao nhieu nguoi?" → goi account_list_users, loc theo
 phong ban, tra loi: "Phong ke toan co 5 nguoi: Thu Huyen, Thanh Truc, ..."
 
-"Doanh so thang nay bao nhieu?" → goi goal_list, tra loi: "Muc tieu thang 7:
+"Doanh so thang nay bao nhieu?" → goi goal_list_cycles, tra loi: "Muc tieu thang 7:
 60 ty. Hien tai: 370 trieu (0.6%)."
 
 "Khieu nai khach hang gan nhat?" → goi square_list_questions, tra loi: "Khieu

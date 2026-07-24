@@ -10,8 +10,7 @@ Search connection_search with: "office", "document", "van ban", "doc"
 
 Key tools:
 - `office_list_documents` — list recent documents (max 20 per API call)
-- `office_get_document` — get full document by ID
-- `office_create_doc` — create a new document
+- `office_create_document` — create a new document
 
 ## Document types on HTP Office
 
@@ -35,6 +34,6 @@ If asked about a specific document, search by title keywords in the list results
 
 Two-turn flow (required by instructions):
 1. Ask: "Xac nhan: Tao van ban '[title]'? (Y/N)"
-2. On "Y", call `office_create_doc` with title and content
+2. On "Y", call `office_create_document` with title and content
 
 Note: The API only returns the 20 most recent docs. Historical documents are not accessible via the API.

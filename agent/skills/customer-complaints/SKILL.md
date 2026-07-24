@@ -10,9 +10,9 @@ Search connection_search with: "square", "question", "khieu nai", "complaint"
 
 Key tools:
 - `square_list_questions` — list all questions/complaints
-- `square_get_question` — get details of one question
-- `square_create_question` — post a new question
-- `square_create_answer` — answer a question
+- `square_get_question_answers` — get answers for one question
+- `square_list_stacks` — list knowledge categories
+- `square_list_topics` — list topics
 
 ## What's in Square
 

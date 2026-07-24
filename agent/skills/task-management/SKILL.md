@@ -13,7 +13,7 @@ Key tools:
 - `wework_list_tasks` — list tasks in a project (needs project ID)
 - `wework_create_task` — create a task (needs name, username, assign)
 - `wework_get_task` — get one task by ID
-- `wework_complete_task` — mark task complete
+- `wework_mark_task_done` — mark task complete
 
 ## Creating a task
 
