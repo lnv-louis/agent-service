@@ -11,7 +11,6 @@ Search connection_search with: "account", "user", "employee", "nhan vien"
 Key tools:
 - `account_search_by_username` — find one user by Base.vn username
 - `account_list_users` — list all users (paginated, 100/page)
-- `account_get_user` — get full profile by user ID
 
 ## Data available per employee
 

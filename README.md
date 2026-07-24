@@ -34,7 +34,7 @@ Base.vn (10 apps, 94 tools)
 
 ```
 agent/
-├── agent.ts              # Model config (gpt-4.1-mini, compaction, limits)
+├── agent.ts              # Model config (gpt-5.6-luna, compaction, limits)
 ├── instructions.md       # Vietnamese system prompt
 ├── channels/
 │   ├── zalo.ts           # Zalo webhook + session control (exit/reset)
@@ -44,8 +44,6 @@ agent/
 ├── hooks/
 │   └── audit.ts          # Tool call + message logging
 ├── instrumentation.ts    # Telemetry (inputs/outputs disabled for PII)
-├── lib/
-│   └── identity.ts       # Zalo user → Base.vn username mapping
 └── skills/
     └── basevn-usage/     # On-demand examples and formatting rules
 ```
@@ -99,7 +97,7 @@ Zalo webhook: `https://agent.htpp.com.vn/eve/v1/zalo`
 - [eve instrumentation](https://eve.dev/docs/guides/instrumentation)
 - [eve deployment](https://eve.dev/docs/guides/deployment)
 - [Zalo Bot Platform](https://bot.zaloplatforms.com/docs)
-- [OpenAI gpt-4.1-mini](https://developers.openai.com/api/docs/models/gpt-4.1-mini)
+- [OpenAI gpt-5.6-luna](https://developers.openai.com/api/docs/models/gpt-5.6-luna)
 - [Model Context Protocol](https://modelcontextprotocol.io)
 - [Vercel Hobby plan](https://vercel.com/docs/plans/hobby)
 - [Upstash Redis](https://upstash.com)

@@ -7,7 +7,6 @@
 import { chatSdkChannel, messageToUserContent } from "eve/channels/chat-sdk";
 import { createZaloAdapter } from "chat-adapter-zalo";
 import { createRedisState } from "@chat-adapter/state-redis";
-import { resolveZaloIdentity } from "../lib/identity";
 
 const zaloAdapter = process.env.ZALO_BOT_TOKEN
   ? createZaloAdapter()
@@ -62,11 +61,9 @@ bot.onNewMention(async (thread: any, message: any) => {
     return;
   }
   await thread.subscribe();
-  const auth = resolveZaloIdentity(message);
   await send(messageToUserContent(message), {
     thread,
     title: text.slice(0, 50),
-    ...(auth ? { auth } : {}),
   });
 });
 
@@ -77,10 +74,8 @@ bot.onSubscribedMessage(async (thread: any, message: any) => {
     await thread.post("Da ket thuc phien. Gui tin nhan moi de bat dau lai.");
     return;
   }
-  const auth = resolveZaloIdentity(message);
   await send(messageToUserContent(message), {
     thread,
-    ...(auth ? { auth } : {}),
   });
 });
 

@@ -9,10 +9,13 @@ description: Handle HR operations via Base.vn Service — leave requests, salary
 Search connection_search with: "service", "ticket", "phieu", "request"
 
 Key tools:
-- `service_list_tickets` — list service tickets
-- `service_get_ticket` — get ticket details
+- `service_list_services` — list available service workflows
+- `service_list_tickets` — list tickets in a service
+- `service_get_ticket_detail` — get ticket details
 - `service_create_ticket` — create a new ticket
-- `service_update_ticket` — update/advance a ticket
+- `service_edit_ticket` — update ticket fields
+- `service_execute_ticket` — advance/execute a ticket
+- `service_get_service_stages` — get stages/blocks for a service
 
 ## HTP Service ticket types
 
